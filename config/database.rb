@@ -1,3 +1,5 @@
+configure do
+  # Log queries to STDOUT in development
  if Sinatra::Application.development?
    set :database, {
      adapter: "sqlite3",
@@ -13,7 +15,7 @@
      database: db.path[1..-1],
      encoding: 'utf8'
    }
- end
+   end
 
   # Load all models from app/models, using autoload instead of require
   # See http://www.rubyinside.com/ruby-techniques-revealed-autoload-1652.html
@@ -22,4 +24,4 @@
     autoload ActiveSupport::Inflector.camelize(filename), model_file
   end
 
-
+end
